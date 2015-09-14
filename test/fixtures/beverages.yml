@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  in_sorage: 1
+  in_storage: 1
 
 two:
   name: MyString
-  in_sorage: 1
+  in_storage: 1
