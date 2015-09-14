@@ -10,7 +10,7 @@ class BeveragesController < ApplicationController
     if @beverage.save
       redirect_to beverages_path, :info => "Beverage added"
     else
-      render "new"
+      redirect_to beverages_path, :danger => "Beverage not added"
     end
   end
 
