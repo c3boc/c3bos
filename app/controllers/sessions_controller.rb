@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_url
+      redirect_to root_url, :info => "Welcome Back"
     else
-      redirect_to log_in_path
+      redirect_to log_in_path, :danger => "Username or Password incorrect"
     end
   end
 

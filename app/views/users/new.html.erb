@@ -1,28 +1,40 @@
 <h1>Sign Up</h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
   <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
+    <div class="alert alert-danger">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
       <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
+         <% @user.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+         <% end %>
       </ul>
     </div>
   <% end %>
-  <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
+  <div class="form-group">
+    <%= f.label :username, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :username, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.password_field :password, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.password_field :password_confirmation, :class => "form-control" %>
+    </div>
+  </div>
 
-  <p class="button"><%= f.submit %></p>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+
+  <p class="button"></p>
 <% end %>

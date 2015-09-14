@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>C3bos</title>
+  <title>C3 BOS</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <div>
-    <% if current_user %>
-      Hello <%= current_user.username %> | <%= link_to "Log out", log_out_path %>
-    <% else %>
-    <%= link_to "Log in", log_in_path %> | <%= link_to "Sign up", sign_up_path %>
+  <%= nav_bar fixed: :top, brand: "C3 BOS", responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item "Dashboard", root_path %>
+        <%= menu_item "Orders", root_path %>
+        <%= menu_item "Bottles", root_path %>
+        <%= drop_down "Admin" do %>
+            <%= menu_item "Users", users_path %>
+            <%= menu_item "Locations", locations_path %>
+            <%= menu_item "Beverages", beverages_path %>
+        <% end %>
     <% end %>
+    <%= menu_group pull: :right do %>
+      <% if current_user %>
+          <p class="navbar-text">Hello <%= current_user.username %> (<%= link_to "Log out", log_out_path %>)</p>
+      <% else %>
+        <%= menu_item "Log In", log_in_path %>
+        <%= menu_item "Sign Up", sign_up_path %>
+      <% end %>
+    <% end %>
+    <% end %>
+
+
+  <div class="container">
+    <div class="row">
+      <%= bootstrap_flash %>
+      <%= yield %>
+    </div>
   </div>
-
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :id => "flash_#{name}" %>
-  <% end %>
-
-  <%= yield %>
 
 </body>
 </html>
