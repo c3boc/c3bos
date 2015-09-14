@@ -1,0 +1,21 @@
+<div class="col-md-12">
+  <h1>All orders</h1>
+  <table class="table table-striped">
+    <tr>
+      <th>Location</th>
+      <th>Orders</th>
+      <th>Printed</th>
+    </tr>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.location.title %></td>
+        <td>
+          <% order.order_items.each do |order_item| %>
+            <%= order_item.beverage.name %>: <%= order_item.amount %><br/>
+          <% end %>
+        </td>
+        <td>xxx</td>
+      </tr>
+    <% end %>
+  </table>
+</div>

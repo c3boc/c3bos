@@ -1,1 +1,37 @@
-<h1>Welcome to the CCC Bar Operating System</h1>
+<div class="col-md-12">
+  <h1>Welcome to the CCC Bar Operating System</h1>
+</div>
+<div class="col-md-4">
+  <div class="well">
+    I know of <b><%= @num_locations %> Location<%= @num_locations != 1 ? "s" : "" %></b> and <b><%= @num_beverages %> different Beverage<%= @num_beverages != 1 ? "s" : "" %></b> with a total count of <b><%= @sum_beverages %> Crates</b> in Stock
+  </div>
+</div>
+<div class="col-md-4">
+  <table class="table table-striped">
+    <tr>
+      <th>Beverage</th>
+      <th>Crates in Stock</th>
+    </tr>
+    <% @beverages.each do |beverage| %>
+      <tr>
+        <td><%= beverage["name"] %></td>
+        <td><%= beverage["in_storage"] %></td>
+      </tr>
+      <% end %>
+  </table>
+</div>
+
+<div class="col-md-4">
+  <table class="table table-striped">
+    <tr>
+      <th>Title</th>
+      <th>Room</th>
+    </tr>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location["title"] %></td>
+        <td><%= location["room"] %></td>
+      </tr>
+      <% end %>
+  </table>
+</div>

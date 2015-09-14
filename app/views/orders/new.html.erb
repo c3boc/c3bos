@@ -1,0 +1,36 @@
+<%= form_for @order, :html => {:class => "form-horizontal"} do |f| %>
+  <% if @order.errors.any? %>
+    <div class="alert alert-danger">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <ul>
+         <% @order.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+         <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :location, :class => "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.collection_select :location_id, @locations,:id,:title, {}, {class: "form-control"} %>
+    </div>
+  </div>
+
+  <%= f.fields_for :order_items do |builder| %>
+    <div class="form-group">
+      <%= builder.label builder.object.beverage.name, :class => "col-sm-3 control-label" %>
+      <div class="col-sm-3">
+        <%= builder.select :amount, (0..20), {}, {:class => "form-control"} %>
+        <%= builder.hidden_field :beverage_id %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+
+  <p class="button"></p>
+<% end %>
