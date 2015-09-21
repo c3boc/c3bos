@@ -40,6 +40,7 @@ gem 'thin'
 group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv', '~> 2.0', require: false
+  gem 'capistrano-linked-files'
 end
 
 group :development, :test do
