@@ -37,7 +37,6 @@ set :deploy_to, '/opt/c3bos/'
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-before :finishing, 'linked_files:upload'
 
 desc 'Restart application'
 task :restart do
@@ -58,5 +57,6 @@ namespace :deploy do
       # end
     end
   end
+  before :finishing, 'linked_files:upload'
 
 end
