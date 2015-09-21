@@ -37,6 +37,10 @@ gem 'thin'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :production do
+  gem 'pg'
+end
+
 group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv', '~> 2.0', require: false
