@@ -41,7 +41,6 @@ task :restart do
     execute "service thin restart"  ## -> line you should add
   end
 end
-after :publishing, :restart
 
 namespace :deploy do
 
