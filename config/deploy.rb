@@ -9,7 +9,7 @@ set :rbenv_ruby, '2.2.3'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, '/var/www/my_app_name'
+set :deploy_to, '/opt/c3bos/'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -34,6 +34,14 @@ set :rbenv_ruby, '2.2.3'
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+desc 'Restart application'
+task :restart do
+  on roles(:app), in: :sequence, wait: 5 do
+    execute "service thin restart"  ## -> line you should add
+  end
+end
+after :publishing, :restart
 
 namespace :deploy do
 
