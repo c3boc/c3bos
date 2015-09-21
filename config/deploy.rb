@@ -5,6 +5,8 @@ set :application, 'c3bos'
 set :repo_url, 'git@github.com:c3boc/c3bos.git'
 set :rbenv_ruby, '2.2.3'
 
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -38,9 +40,11 @@ set :deploy_to, '/opt/c3bos/'
 desc 'Restart application'
 task :restart do
   on roles(:app), in: :sequence, wait: 5 do
-    execute "service thin restart"  ## -> line you should add
+    sudo "service thin restart"  ## -> line you should add
   end
 end
+
+after :deploy, :restart
 
 namespace :deploy do
 
