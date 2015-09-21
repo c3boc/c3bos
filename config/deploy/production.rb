@@ -7,7 +7,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-server 'gnomus.de', user: 'c3bos', roles: %w{web app}, port: 2342
+server 'gnomus.de', user: 'c3bos', roles: %w{web app db}, port: 2342
 
 
 # role-based syntax
