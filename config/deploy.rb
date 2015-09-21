@@ -57,6 +57,6 @@ namespace :deploy do
       # end
     end
   end
-  before :finishing, 'linked_files:upload'
+  before :finishing, 'linked_files:upload_files'
 
 end
