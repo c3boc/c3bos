@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "sign_up" => "users#new", :as => "sign_up"
   get "place_order" => "orders#new", :as => "place_order"
+
+  get "/user/:id/role/:role" => "users#set_role", :as => "edit_role"
+
   root :to => "dashboard#index"
   resources :users
   resources :sessions

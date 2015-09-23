@@ -1,4 +1,6 @@
 class BeveragesController < ApplicationController
+  before_action :authorize_admin
+
   def index
     @beverages = Beverage.all
     @beverage = Beverage.new

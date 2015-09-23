@@ -2,14 +2,18 @@
   <table class="table table-striped">
     <tr>
       <th>User</th>
-      <th>Admin</th>
+      <th>Role</th>
       <th>Actions</th>
     </tr>
     <% @users.each do |user| %>
       <tr>
         <td><%= user["username"] %></td>
-        <td>+</td>
-        <td>Edit, <%= link_to "Delete", user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>, Admin</td>
+        <td>
+          <% unless user["role"] == 0 %><%= link_to "Disabled", edit_role_path(user,0) %><% else %>Disabled<% end %> |
+          <% unless user["role"] == 1 %><%= link_to "User", edit_role_path(user,1) %><% else %>User<% end %> |
+          <% unless user["role"] == 2 %><%= link_to "Admin", edit_role_path(user,2) %><% else %>Admin<% end %>
+        </td>
+        <td><%= link_to "Delete", user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </table>

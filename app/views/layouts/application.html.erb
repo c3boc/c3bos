@@ -12,11 +12,13 @@
   <%= nav_bar fixed: :top, brand: "C3 BOS", responsive: true do %>
     <%= menu_group do %>
         <%= menu_item "Dashboard", root_path %>
-        <%= menu_item "Orders", orders_path %>
-        <%= drop_down "Admin" do %>
-            <%= menu_item "Users", users_path %>
-            <%= menu_item "Locations", locations_path %>
-            <%= menu_item "Beverages", beverages_path %>
+        <% if user? %><%= menu_item "Orders", orders_path %><% end %>
+        <% if admin? %>
+          <%= drop_down "Admin" do %>
+              <%= menu_item "Users", users_path %>
+              <%= menu_item "Locations", locations_path %>
+              <%= menu_item "Beverages", beverages_path %>
+          <% end %>
         <% end %>
     <% end %>
     <%= menu_group pull: :right do %>

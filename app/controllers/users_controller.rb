@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authorize_admin
+  skip_before_action :authorize_admin, only: [:new, :create]
+
 
   def index
     @users = User.all
@@ -10,6 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.role = 0
 
     if @user.save
       redirect_to root_url, :info => "Signed up!"
@@ -21,6 +25,16 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+
+    redirect_to users_path
+  end
+
+  def set_role
+    @user = User.find(params[:id])
+    @user.role = params[:role]
+    session.delete(@user.id) if @user.role == 0
+    @user.save
+
 
     redirect_to users_path
   end

@@ -5,12 +5,42 @@ class ApplicationController < ActionController::Base
 
   add_flash_types :success, :warning, :danger, :info
 
+  before_filter :logout_guest
+
+  def logout_guest
+    if current_user && !current_user.user?
+      redirect_to log_out_path, :danger => "You were logged out by an Admin"
+    end
+  end
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
 
+
+
+  def admin?
+    current_user && current_user.admin?
+  end
+  helper_method :admin?
+
+  def user?
+    current_user && current_user.user?
+  end
+  helper_method :user?
+
+  private
   def authorize
     redirect_to log_in_path unless current_user
   end
+
+  def authorize_admin
+    if current_user
+      redirect_to root_url, :danger => "You are not allowed to view this Page" unless admin?
+    else
+      authorize
+    end
+  end
+
 end
