@@ -5,6 +5,9 @@
   <div class="well">
     I know of <b><%= @num_locations %> Location<%= @num_locations != 1 ? "s" : "" %></b> and <b><%= @num_beverages %> different Beverage<%= @num_beverages != 1 ? "s" : "" %></b> with a total count of <b><%= @sum_beverages %> Crates</b> in Stock
   </div>
+  <% if user? %>
+    <%= link_to "Place Order", place_order_path, {class: "btn btn-primary btn-lg"} %>
+  <% end %>
 </div>
 <div class="col-md-4">
   <table class="table table-striped">
