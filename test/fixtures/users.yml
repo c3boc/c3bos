@@ -3,7 +3,9 @@
 one:
   username: MyString
   password_digest: MyString
+  role: 0
 
 two:
   username: MyString
   password_digest: MyString
+  role: 0
