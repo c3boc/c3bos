@@ -15,6 +15,13 @@ Rails.application.routes.draw do
   resources :beverages
   resources :orders
 
+  namespace :api do
+    namespace :v1 do
+      get "print" => "print#list"
+      get "print/:id" => "print#set_printed"
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

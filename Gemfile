@@ -34,6 +34,9 @@ gem "twitter-bootstrap-rails"
 # gem 'unicorn'
 gem 'thin'
 
+gem 'rabl'
+gem 'oj'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
