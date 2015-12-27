@@ -7,7 +7,6 @@ $ ->
     $(this).addClass("btn-primary")
     $("form#new_order input#order_location_id").val($(this).data("location-id"))
 
-  $("#locationSelect button:first-child").click()
 
 
   $("button[data-action=\"increase-amount\"]").click () ->
