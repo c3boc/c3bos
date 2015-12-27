@@ -5,6 +5,6 @@ class DashboardController < ApplicationController
 
     @beverages = Beverage.all
     @num_beverages = @beverages.count
-    @sum_beverages = @beverages.reduce(0) { |sum, beverage| sum + beverage['in_storage']}
+    @sum_beverages = @beverages.reduce(0) { |sum, beverage| sum + (beverage['in_storage'] || 0)}
   end
 end

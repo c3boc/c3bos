@@ -13,14 +13,13 @@ $ ->
   $("button[data-action=\"increase-amount\"]").click () ->
     beverageId = $(this).data("beverage-id")
     span = $(".well-beverage .beverage-amount[data-beverage-id=\"" + beverageId + "\"]")
-    newAmount = parseInt(span.html()) + 1
+    newAmount = parseInt(span.html()) + 2
     span.html(newAmount)
     $("#order_order_items_attributes_" + beverageId + "_amount").val(newAmount)
 
   $("button[data-action=\"decrease-amount\"]").click () ->
     beverageId = $(this).data("beverage-id")
     span = $(".well-beverage .beverage-amount[data-beverage-id=\"" + beverageId + "\"]")
-    newAmount = Math.max(parseInt(span.html()) - 1, 0)
+    newAmount = Math.max(parseInt(span.html()) - 2, 0)
     span.html(newAmount)
-    console.log "order_order_items_attributes_" + beverageId + "_amount"
     $("#order_order_items_attributes_" + beverageId + "_amount").val(newAmount)

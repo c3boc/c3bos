@@ -16,7 +16,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
 
-    puts @order.inspect
+    @order.printed = false
+
 
     if @order.save
       redirect_to root_url, :success => "Order placed. Thank you!"
