@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def index
     
-    @orders = Order.all
+    @orders = Order.order('id desc').all
   end
 
   def new
