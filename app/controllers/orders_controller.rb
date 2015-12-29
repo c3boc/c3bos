@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def index
     
-    @orders = Order.find(:all, :order => "id desc", :limit => 20).reverse)
+    @orders = Order.find(:all, :order => "id desc", :limit => 20).reverse
   end
 
   def new
