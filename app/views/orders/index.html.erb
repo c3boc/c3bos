@@ -5,6 +5,7 @@
       <th>Id</th>
       <th>Date</th>
       <th>Location</th>
+      <th>User</th>
       <th>Orders</th>
       <th>Printed</th>
     </tr>
@@ -12,7 +13,8 @@
       <tr>
         <td><%= order.id %></td>
         <td><%= order.created_at %></td>
-        <td><%= order.location.title %></td>
+        <td><%= order.location.title if order.location %></td>
+        <td><%= order.user.username if order.user %></td>
         <td>
           <% order.order_items.select { |oi| !oi.amount.nil? && oi.amount > 0 }.each do |order_item| %>
             <%= order_item.beverage.name %>: <%= order_item.amount %><br/>

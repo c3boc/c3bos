@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     @order.printed = false
-
+    @order.user = current_user
 
     if @order.save
       redirect_to root_url, :success => "Order placed. Thank you!"
