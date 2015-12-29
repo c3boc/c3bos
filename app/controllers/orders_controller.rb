@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def index
     
-    @orders = Order.order('id desc').limit(20).reverse
+    @orders = Order.order('id desc').limit(20)
   end
 
   def new
