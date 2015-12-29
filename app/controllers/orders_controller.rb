@@ -1,8 +1,7 @@
 class OrdersController < ApplicationController
 
   def index
-    
-    @orders = Order.all
+    @orders = Order.order('id desc').all
   end
 
   def new
@@ -18,11 +17,11 @@ class OrdersController < ApplicationController
 
     @order.printed = false
 
-
     if @order.save
       redirect_to root_url, :success => "Order placed. Thank you!"
     else
-      render "new"
+      @locations = Location.all
+      render :new
     end
   end
 
