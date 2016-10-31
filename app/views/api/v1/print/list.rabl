@@ -9,10 +9,6 @@ child :order_items, object_root: false do
   end
 end
 
-glue :location do
-  attributes title: :location
-end
-
 glue :user do
   attributes username: :user
 end

@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   def index
-    
+
     @orders = Order.order('id desc').limit(20)
   end
 
@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
     @order.order_items = Beverage.all.map do |beverage|
       OrderItem.new(beverage: beverage)
     end
-    @locations = Location.all
   end
 
   def create
@@ -28,7 +27,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:location_id, order_items_attributes: [:beverage_id, :amount])
+    params.require(:order).permit(order_items_attributes: [:beverage_id, :amount])
   end
 
 end

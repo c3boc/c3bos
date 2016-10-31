@@ -1,13 +1,4 @@
 
-  <div class="col-sm-12">
-    <div id="locationSelect" class="btn-group" style="width:100%; margin-bottom:20px;">
-      <% @locations.each do |location| %>
-        <button class="btn btn-default btn-lg" style="width:<%= 100.0/@locations.length %>%" data-location-id="<%= location["id"] %>">
-          <%= location.title %>
-        </button>
-      <% end %>
-    </div>
-  </div>
 
   <% @order.order_items.each_with_index do |order_item, index| %>
     <div class="col-sm-6">
