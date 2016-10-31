@@ -1,5 +1,7 @@
 # c3bos
-![Test Status](https://travis-ci.org/c3boc/c3bos.svg?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/c3boc/c3bos/badges/build.png?b=master)](https://scrutinizer-ci.com/g/c3boc/c3bos/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/c3boc/c3bos/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/c3boc/c3bos/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/c3boc/c3bos/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/c3boc/c3bos/?branch=master)
 
 CCC Bar Operation System
 
