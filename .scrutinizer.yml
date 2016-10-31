@@ -10,7 +10,8 @@ build:
     override:
       -
         command: 'bundle exec rake test'
-        environment: 'SCRUTINIZER_CC_FILE': 'code-coverage'
+        environment:
+          'SCRUTINIZER_CC_FILE': 'code-coverage'
         coverage:
           file: 'code-coverage'
           format: 'rb-cc'
