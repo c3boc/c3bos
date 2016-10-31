@@ -6,7 +6,12 @@ filter:
     - 'test/*'
     - 'vendor/*'
 build:
+  environment:
+    ruby: '2.3.1'
   tests:
+    before:
+      - 'cp ./config/database.yml.example ./config/database.yml'
+      - 'cp ./config/secrets.yml.example ./config/secrets.yml'
     override:
       -
         command: 'bundle exec rake test'
