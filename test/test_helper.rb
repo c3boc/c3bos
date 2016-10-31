@@ -3,7 +3,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'scrutinizer/ocular'
 
-Scrutinizer::Ocular.watch!
+Scrutinizer::Ocular.watch! 'rails'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
