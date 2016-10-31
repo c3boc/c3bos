@@ -38,6 +38,8 @@ gem 'rabl'
 gem 'oj'
 
 gem "chartkick"
+gem "will_paginate"
+gem "will_paginate-bootstrap"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def index
 
-    @orders = Order.order('id desc').limit(20)
+    @orders = Order.order('id desc').paginate(page: params[:page])
   end
 
   def new
