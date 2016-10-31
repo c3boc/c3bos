@@ -63,4 +63,5 @@ group :development, :test do
   gem 'spring'
 
   gem 'rake'
+  gem 'scrutinizer-ocular'
 end

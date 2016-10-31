@@ -1,0 +1,13 @@
+checks:
+  ruby: true
+  javascript: true
+filter:
+  excluded_paths:
+    - 'test/*'
+    - 'vendor/*'
+build:
+  tests:
+    override:
+      -
+        command: 'bundle exec rspec spec'
+
