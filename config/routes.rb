@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "place_order" => "orders#new", :as => "place_order"
 
   get "/user/:id/role/:role" => "users#set_role", :as => "edit_role"
+  post "/beverages/deliver" => "beverages#deliver", :as => "deliver"
 
   root :to => "dashboard#index"
   resources :users
