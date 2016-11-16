@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
 
-    @order.printed = false
+    @order.pending!
     @order.user = current_user
 
     if @order.save

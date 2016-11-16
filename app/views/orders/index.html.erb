@@ -6,7 +6,7 @@
       <th>Date</th>
       <th>User</th>
       <th>Orders</th>
-      <th>Printed</th>
+      <th>State</th>
     </tr>
     <% @orders.each do |order| %>
       <tr>
@@ -18,7 +18,7 @@
             <%= order_item.beverage.name %>: <%= order_item.amount %><br/>
           <% end %>
         </td>
-        <td><%= order.printed %></td>
+        <td><%= order.state %></td>
       </tr>
     <% end %>
   </table>
