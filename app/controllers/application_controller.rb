@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   add_flash_types :success, :warning, :danger, :info
 
-  before_filter :logout_guest
+  before_action :logout_guest
 
   def logout_guest
     if current_user && !current_user.user?
