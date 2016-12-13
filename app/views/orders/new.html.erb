@@ -1,4 +1,17 @@
-
+<% if @last_order.created_at > 30.minutes.ago %>
+  <div class="alert alert-danger">
+    <b>
+      Your last order is <%= time_ago_in_words(@last_order.created_at) %> ago. Are you sure to order again?
+    </b><br/>
+    <br/>
+    Last Order:<br/>
+    <% @last_order.order_items.each do |order_item| %>
+      <% if order_item.amount && order_item.amount > 0 %>
+        <%= order_item.beverage.name %>: <%= order_item.amount %><br/>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
 
   <% @order.order_items.each_with_index do |order_item, index| %>
     <div class="col-sm-6">

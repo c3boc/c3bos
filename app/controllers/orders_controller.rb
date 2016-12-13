@@ -10,6 +10,8 @@ class OrdersController < ApplicationController
     @order.order_items = Beverage.all.map do |beverage|
       OrderItem.new(beverage: beverage)
     end
+
+    @last_order = Order.where(user: current_user).order('created_at desc').first
   end
 
   def create
