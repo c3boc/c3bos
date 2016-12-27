@@ -1,4 +1,4 @@
-<% if @last_order.created_at > 30.minutes.ago %>
+<% if @last_order && @last_order.created_at > 30.minutes.ago %>
   <div class="alert alert-danger">
     <b>
       Your last order is <%= time_ago_in_words(@last_order.created_at) %> ago. Are you sure to order again?
