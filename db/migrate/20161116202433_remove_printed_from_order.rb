@@ -1,4 +1,4 @@
-class RemovePrintedFromOrder < ActiveRecord::Migration
+class RemovePrintedFromOrder < ActiveRecord::Migration[5.0]
   def change
     remove_column :orders, :printed, :boolean
   end

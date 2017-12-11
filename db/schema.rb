@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,48 +12,53 @@
 
 ActiveRecord::Schema.define(version: 20161116202550) do
 
-  create_table "beverages", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "in_storage"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "beverages", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.integer "in_storage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "locations", force: :cascade do |t|
-    t.string   "title"
-    t.string   "room"
+  create_table "locations", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.string "room"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "order_items", force: :cascade do |t|
-    t.integer  "order_id"
-    t.integer  "beverage_id"
-    t.integer  "amount"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "order_items", id: :serial, force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "beverage_id"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beverage_id"], name: "index_order_items_on_beverage_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
-  add_index "order_items", ["beverage_id"], name: "index_order_items_on_beverage_id"
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
-
-  create_table "orders", force: :cascade do |t|
-    t.integer  "location_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "user_id"
-    t.integer  "state",       default: 0
+  create_table "orders", id: :serial, force: :cascade do |t|
+    t.integer "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "state", default: 0
+    t.index ["location_id"], name: "index_orders_on_location_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  add_index "orders", ["location_id"], name: "index_orders_on_location_id"
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
-
-  create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "role",            null: false
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "role", null: false
   end
 
+  add_foreign_key "order_items", "beverages"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "locations"
+  add_foreign_key "orders", "users"
 end
