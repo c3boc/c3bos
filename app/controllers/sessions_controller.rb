@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :logout_guest, only: [:destroy]
+  skip_before_action :logout_guest, only: [:destroy]
 
   def new
   end
