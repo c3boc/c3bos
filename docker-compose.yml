@@ -1,15 +1,11 @@
 version: "3.4"
 
 services:
-  c3bos:
-    build: "."
-    volumes:
-      - "./:/app/"
-    ports:
-      - "3000:3000"
   db:
     image: "postgres:10.1"
     environment:
       POSTGRES_PASSWORD: "c3bos_development"
       POSTGRES_DB: "c3bos_development"
       POSTGRES_USER: "c3bos_development"
+    ports:
+      - "5432:5432"
