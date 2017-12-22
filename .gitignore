@@ -45,3 +45,6 @@ build/
 
 /config/database.yml
 /config/secrets.yml
+/public/packs
+/public/packs-test
+/node_modules
