@@ -17,5 +17,8 @@ COPY . .
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 COPY --from=builder /app/public/packs public/
 
+RUN cp config/database.yml.example config/database.yml && \
+    cp config/secrets.yml.example config/secrets.yml
+
 ENTRYPOINT ["bundle", "exec"]
 CMD ["rails", "server"]
