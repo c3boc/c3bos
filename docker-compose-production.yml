@@ -5,6 +5,8 @@ services:
     image: "c3boc/c3bos:latest"
     environment:
       RAILS_ENV: "production"
+      DATABASE_PASSWORD: "example"
+      SECRET_KEY_BASE: "example"
     deploy:
       labels:
         - "traefik.enable=true"
