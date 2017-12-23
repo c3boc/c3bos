@@ -17,6 +17,8 @@ services:
       POSTGRES_PASSWORD: "example"
       POSTGRES_DB: "c3bos"
       POSTGRES_USER: "c3bos"
+    volumes:
+      - /opt/db:/var/lib/postgresql/data
   proxy:
     image: traefik:1.4
     ports:
