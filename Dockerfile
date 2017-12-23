@@ -11,6 +11,8 @@ FROM ruby:2.4.2-slim
 ENV RAILS_LOG_TO_STDOUT=1
 WORKDIR /app
 
+RUN apt update && apt install libpq5
+
 COPY . .
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 COPY --from=builder /app/public/packs public/
