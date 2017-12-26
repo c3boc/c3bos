@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(order_items_attributes: [:beverage_id, :amount])
+    params.require(:order).permit(:location_id, order_items_attributes: [:beverage_id, :amount])
   end
 
   def submit_order_to_queue(order)
