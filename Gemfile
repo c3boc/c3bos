@@ -23,6 +23,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "bunny", ">= 2.6.3"
 
+gem 'will_paginate', '~> 3.1.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
