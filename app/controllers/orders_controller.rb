@@ -47,7 +47,8 @@ class OrdersController < ApplicationController
 
     serialized_order = order.to_json(:include => {
       :order_items => {
-        :include =>  :beverage  }
+        :include => :beverage  },
+      :user => {}
     })
     exchange.publish(serialized_order, :routing_key => "c3bos.orders")
   end
