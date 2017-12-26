@@ -35,11 +35,11 @@ class OrdersController < ApplicationController
   end
 
   def submit_order_to_queue(order)
-    connection = Bunny.new(:host => "127.0.0.1",
+    connection = Bunny.new(:host => "rabbitmq",
                            :port => "5672",
-                           :user => "c3bos",
-                           :password => "c3bos",
-                           :vhost => "c3boc.c3bos")
+                           :user => ENV["RABBITMQ_USER"],
+                           :password => ENV["RABBITMQ_PASS"],
+                           :vhost => ENV["RABBITMQ_VHOST"])
     connection.start
 
     channel = connection.create_channel
