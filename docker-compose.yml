@@ -1,11 +1,46 @@
 version: "3.4"
 
 services:
+  c3bos:
+    build:
+      context: .
+    image: c3boc/c3bos:latest
+    environment:
+      RAILS_ENV: "production"
+      SECRET_KEY_BASE: "3c92f8edf3ae2b64a0562a68d0e104ea4db9b62bed7f37cf21a19432857ebcd0d2e9c6539f1725440a4bdbd2e29ac86fd302086aa349ee4691d85d7d1131da10"
+      POSTGRES_DB: "c3bos"
+      POSTGRES_USER: "c3bos"
+      POSTGRES_PASSWORD: "c3bos"
+      RABBITMQ_USER: "c3bos"
+      RABBITMQ_PASS: "c3bos"
+      RABBITMQ_VHOST: "c3boc.c3bos"
+    ports:
+      - "3000:3000"
+    networks:
+      - default
+      - c3bos
+
   db:
     image: "postgres:10.1"
     environment:
-      POSTGRES_PASSWORD: "c3bos_development"
-      POSTGRES_DB: "c3bos_development"
-      POSTGRES_USER: "c3bos_development"
-    ports:
-      - "5432:5432"
+      POSTGRES_DB: "c3bos"
+      POSTGRES_USER: "c3bos"
+      POSTGRES_PASSWORD: "c3bos"
+    networks:
+      - default
+      - c3bos
+
+  rabbitmq:
+    image: rabbitmq:3.6.10-management
+    environment:
+      RABBITMQ_DEFAULT_VHOST: "c3boc.c3bos"
+      RABBITMQ_DEFAULT_USER: "c3bos"
+      RABBITMQ_DEFAULT_PASS: "c3bos"
+    networks:
+      - default
+      - c3bos
+
+networks:
+  c3bos:
+    external:
+      name: c3bos
