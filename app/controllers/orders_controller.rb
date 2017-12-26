@@ -21,7 +21,9 @@ class OrdersController < ApplicationController
     @order.pending!
 
     if @order.save
+      submit_order_to_queue(@order)
       redirect_to root_url, :success => "Order placed. Thank you!"
+
     else
       render "new"
     end
@@ -32,4 +34,21 @@ class OrdersController < ApplicationController
     params.require(:order).permit(order_items_attributes: [:beverage_id, :amount])
   end
 
+  def submit_order_to_queue(order)
+    connection = Bunny.new(:host => "127.0.0.1",
+                           :port => "5672",
+                           :user => "c3bos",
+                           :password => "c3bos",
+                           :vhost => "c3boc.c3bos")
+    connection.start
+
+    channel = connection.create_channel
+    exchange  = channel.default_exchange
+
+    serialized_order = order.to_json(:include => {
+      :order_items => {
+        :include =>  :beverage  }
+    })
+    exchange.publish(serialized_order, :routing_key => "c3bos.orders")
+  end
 end
