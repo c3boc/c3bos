@@ -2,6 +2,6 @@ language: ruby
 jobs:
   include:
     - stage: lint
-      script: rubocop
+      script: bundle exec rubocop
 services:
   - postgresql
