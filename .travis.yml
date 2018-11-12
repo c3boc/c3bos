@@ -1,5 +1,7 @@
 language: ruby
-obs:
+jobs:
   include:
     - stage: lint
       script: rubocop
+services:
+  - postgresql
