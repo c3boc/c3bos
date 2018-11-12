@@ -1,13 +1,18 @@
 <div class="col-md-12">
-  <h1>Welcome to the CCC Bar Operating System</h1>
+  <h1>
+    Welcome to the CCC Bar Operating System
+    <div class="pull-right">
+      <% if user? %>
+        <%= link_to "Place new Order", place_order_path, {class: "btn btn-primary btn-lg"} %>
+      <% end %>
+    </div>
+  </h1>
 </div>
-<div class="col-md-6">
-  <div class="well">
-    I know of <b><%= @num_beverages %> different Beverage<%= @num_beverages != 1 ? "s" : "" %></b> with a total count of <b><%= @sum_beverages %> Crates</b> in Stock
-  </div>
+<div class="col-md-12">
   <% if user? %>
-    <h2>Your Pending orders</h2>
-
+    <h2>
+      Your Pending orders
+    </h2>
     <table class="table table-striped">
       <tr>
         <th>Items</th>
@@ -18,7 +23,7 @@
         <tr>
           <td>
             <% order.order_items.select { |oi| !oi.amount.nil? && oi.amount > 0 }.each do |order_item| %>
-              <%= order_item.beverage.name %>: <%= order_item.amount %><br/>
+            <%= order_item.beverage.name %>: <%= order_item.amount %><br/>
             <% end %>
           </td>
           <td><%= time_ago_in_words(order.created_at) %></td>
@@ -26,23 +31,5 @@
         </tr>
       <% end %>
     </table>
-
-
-    <%= link_to "Place Order", place_order_path, {class: "btn btn-primary btn-lg"} %>
   <% end %>
 </div>
-<div class="col-md-6">
-  <table class="table table-striped">
-    <tr>
-      <th>Beverage</th>
-      <th>Crates in Stock</th>
-    </tr>
-    <% @beverages.each do |beverage| %>
-      <tr>
-        <td><%= beverage["name"] %></td>
-        <td><%= beverage["in_storage"] %></td>
-      </tr>
-      <% end %>
-  </table>
-</div>
-
