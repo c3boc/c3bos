@@ -17,8 +17,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
 
-    @order.pending!
     @order.user = current_user
+    @order.pending!
 
     if @order.save
       redirect_to root_url, :success => "Order placed. Thank you!"
