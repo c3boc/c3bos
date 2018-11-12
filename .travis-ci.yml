@@ -1,0 +1,5 @@
+language: ruby
+obs:
+  include:
+    - stage: lint
+      script: rubocop
