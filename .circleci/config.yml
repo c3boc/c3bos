@@ -55,9 +55,15 @@ jobs:
       - run: bundle exec rake test
 workflows:
   version: 2
-  lint:
+  test:
     jobs:
-      - rubocop
+      - deps
+      - unittests:
+          requires:
+            - deps
+      - rubocop:
+          requires:
+            - deps
   test:
     jobs:
       - unittests
