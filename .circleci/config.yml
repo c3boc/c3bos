@@ -2,8 +2,9 @@ version: 2
 jobs:
   rubocop:
     docker:
-      - image: c3boc/c3bos:latest
+      - image: ruby:2.5.3
     steps:
+      - run: bundle install
       - run: bundle exec rubocop
 workflows:
   version: 2
