@@ -54,7 +54,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp/workspace
+          at: /root/project
       - run:
           name: Run tests
           command: bundle exec rake test
