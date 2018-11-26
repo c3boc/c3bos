@@ -3,6 +3,8 @@ jobs:
   rubocop:
     docker:
       - image: c3boc/c3bos:latest
+    steps:
+      - rubocop
 workflows:
   version: 2
   lint:
