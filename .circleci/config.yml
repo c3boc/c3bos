@@ -27,6 +27,7 @@ jobs:
           root: /root/project/
           paths:
             - vendor/bundle
+            - config/database.yml
   rubocop:
     docker:
       - image: ruby:2.5.3
