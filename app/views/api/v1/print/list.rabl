@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 collection @orders, object_root: false
 
 attributes :id, :created_at

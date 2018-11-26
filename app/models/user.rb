@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ActiveRecord::Base
   has_secure_password
 
@@ -5,10 +7,10 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
 
   def admin?
-    self.role >= 2
+    role >= 2
   end
 
   def user?
-    self.role >= 1
+    role >= 1
   end
 end

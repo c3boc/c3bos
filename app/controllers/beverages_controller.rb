@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BeveragesController < ApplicationController
   before_action :authorize_admin
 
@@ -10,9 +12,9 @@ class BeveragesController < ApplicationController
     @beverage = Beverage.new(user_params)
 
     if @beverage.save
-      redirect_to beverages_path, :info => "Beverage added"
+      redirect_to beverages_path, info: 'Beverage added'
     else
-      redirect_to beverages_path, :danger => "Beverage not added"
+      redirect_to beverages_path, danger: 'Beverage not added'
     end
   end
 
@@ -20,12 +22,12 @@ class BeveragesController < ApplicationController
     @beverage = Beverage.find(params[:id])
     @beverage.destroy
 
-    redirect_to beverages_path, :info => "Beverage removed"
+    redirect_to beverages_path, info: 'Beverage removed'
   end
 
   private
+
   def user_params
     params.require(:beverage).permit(:name)
   end
-
 end

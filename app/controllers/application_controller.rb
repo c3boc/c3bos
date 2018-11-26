@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -9,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def logout_guest
     if current_user && !current_user.user?
-      redirect_to log_out_path, :danger => "You were logged out by an Admin"
+      redirect_to log_out_path, danger: 'You were logged out by an Admin'
     end
   end
 
@@ -18,29 +20,27 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-
-
   def admin?
-    current_user && current_user.admin?
+    current_user&.admin?
   end
   helper_method :admin?
 
   def user?
-    current_user && current_user.user?
+    current_user&.user?
   end
   helper_method :user?
 
   private
+
   def authorize
-    redirect_to log_in_path, :danger => "You are not allowed to view this Page" unless current_user
+    redirect_to log_in_path, danger: 'You are not allowed to view this Page' unless current_user
   end
 
   def authorize_admin
     if current_user
-      redirect_to root_url, :danger => "You are not allowed to view this Page" unless admin?
+      redirect_to root_url, danger: 'You are not allowed to view this Page' unless admin?
     else
       authorize
     end
   end
-
 end
