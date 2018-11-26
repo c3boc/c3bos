@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: c3boc/c3bos:latest
     steps:
-      - rubocop
+      - run: rubocop
 workflows:
   version: 2
   lint:
