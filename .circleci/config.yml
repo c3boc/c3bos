@@ -10,14 +10,14 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - bundle-install-{{ checksum "Gemfile.lock" }}
-            - bundle-install-
+            - v1-bundle-install-{{ checksum "Gemfile.lock" }}
+            - v1-bundle-install-
       - run: find
       - run:
           name: Bundler install
           command: bundle install
       - save_cache:
-          key: bundle-install-{{ checksum "Gemfile.lock" }}
+          key: v1-bundle-install-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
       - run:
