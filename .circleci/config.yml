@@ -22,6 +22,7 @@ jobs:
       - run:
           name: Setup database.yml
           command: cp config/database.yml.example config/database.yml
+      - run: pwd
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
