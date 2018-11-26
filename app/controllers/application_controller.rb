@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   private
   def authorize
-    redirect_to log_in_path unless current_user
+    redirect_to log_in_path, :danger => "You are not allowed to view this Page" unless current_user
   end
 
   def authorize_admin
