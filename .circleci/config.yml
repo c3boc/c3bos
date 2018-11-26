@@ -10,7 +10,9 @@ jobs:
   unittests:
     docker:
       - image: ruby:2.5.3
-      - image: postgres:10.1
+      - image: postgres:11
+        environment:
+          POSTGRES_DB: c3bos_test
     steps:
       - checkout
       - run: bundle install
