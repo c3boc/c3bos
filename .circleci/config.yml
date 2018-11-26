@@ -4,11 +4,21 @@ jobs:
     docker:
       - image: ruby:2.5.3
     steps:
-      - checkout 
+      - checkout
       - run: bundle install
       - run: bundle exec rubocop
+  unittests:
+    docker:
+      - image: ruby:2.5.3
+    steps:
+      - checkout
+      - run: bundle install
+      - run: bundle exec test
 workflows:
   version: 2
   lint:
     jobs:
       - rubocop
+  test:
+    jobs:
+      - unittests
