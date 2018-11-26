@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
   def user?
     role >= 1
   end
+
+  def disabled?
+    role.zero?
+  end
 end

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     user = User.find_by_username(params[:username])
 
     if user&.authenticate(params[:password])
-      if user.role > 0
+      if user.user?
         session[:user_id] = user.id
         redirect_to root_url, info: 'Welcome Back'
       else
