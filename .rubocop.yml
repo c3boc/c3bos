@@ -4,3 +4,9 @@ Style/Documentation:
   Enabled: false
 Metrics/AbcSize:
   Enabled: false
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'node_modules/**/*'
+    - 'db/schema.rb'
