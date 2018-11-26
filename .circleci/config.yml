@@ -12,7 +12,7 @@ jobs:
           keys:
             - v1-bundle-install-{{ checksum "Gemfile.lock" }}
             - v1-bundle-install-
-      - run: find
+      - run: find vendor
       - run:
           name: Bundler install
           command: bundle install
