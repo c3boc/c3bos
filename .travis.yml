@@ -1,7 +1,0 @@
-language: ruby
-jobs:
-  include:
-    - stage: lint
-      script: bundle exec rubocop
-services:
-  - postgresql
