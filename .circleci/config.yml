@@ -24,7 +24,7 @@ jobs:
           command: cp config/database.yml.example config/database.yml
       - run: pwd
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: /root/project/
           paths:
             - vendor/bundle
   rubocop:
@@ -36,7 +36,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp/workspace
+          at: /root/project
       - run:
           name: run rubocop
           command: bundle exec rubocop
