@@ -1,15 +1,48 @@
 version: 2
 jobs:
+  deps:
+    docker:
+      - image: ruby:2.5.3
+      environment:
+        BUNDLE_PATH: vendor_bundle
+        RAILS_ENV: test
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - bundle-install-{{ checksum "Gemfile.lock" }}
+            - bundle-install-
+      - run:
+        name: Bundler install
+        command: bundle install
+      - save_cache:
+          key: bundle-install-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run:
+        name: Setup database.yml
+        command: cp config/database.yml.example config/database.yml
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - vendor/bundle
   rubocop:
     docker:
       - image: ruby:2.5.3
+        environment:
+          BUNDLE_PATH: vendor/bundle
+          RAILS_ENV: test
     steps:
       - checkout
-      - run: bundle install
+      - attach_workspace:
+          at: /tmp/workspace
       - run: bundle exec rubocop
   unittests:
     docker:
       - image: ruby:2.5.3
+        environment:
+          BUNDLE_PATH: vendor/bundle
+          RAILS_ENV: test
       - image: postgres:11
         environment:
           POSTGRES_DB: c3bos_test
@@ -17,8 +50,8 @@ jobs:
           POSTGRES_PASSWORD: c3bos_test
     steps:
       - checkout
-      - run: bundle install
-      - run: cp config/database.yml.example config/database.yml
+      - attach_workspace:
+          at: /tmp/workspace
       - run: bundle exec rake test
 workflows:
   version: 2
