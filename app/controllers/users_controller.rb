@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def set_role
     @user = User.find(params[:id])
     @user.role = params[:role]
-    session.delete(@user.id) if @user.role == 0
+    session.delete(@user.id) if @user.disabled?
     @user.save
 
     redirect_to users_path
