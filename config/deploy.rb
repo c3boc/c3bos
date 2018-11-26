@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
@@ -37,18 +39,16 @@ set :deploy_to, '/opt/c3bos/'
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-
 desc 'Restart application'
 task :restart do
   on roles(:app), in: :sequence, wait: 5 do
-    sudo "service thin restart"  ## -> line you should add
+    sudo 'service thin restart' ## -> line you should add
   end
 end
 
 after :deploy, :restart
 
 namespace :deploy do
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -58,5 +58,4 @@ namespace :deploy do
     end
   end
   before :migrate, 'linked_files:upload_files'
-
 end

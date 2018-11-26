@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :authorize_admin
-  skip_before_action :authorize_admin, only: [:new, :create]
-
+  skip_before_action :authorize_admin, only: %i[new create]
 
   def index
     @users = User.all
@@ -16,9 +17,9 @@ class UsersController < ApplicationController
     @user.role = 0
 
     if @user.save
-      redirect_to root_url, :info => "Signed up!"
+      redirect_to root_url, info: 'Signed up!'
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -35,13 +36,12 @@ class UsersController < ApplicationController
     session.delete(@user.id) if @user.role == 0
     @user.save
 
-
     redirect_to users_path
   end
 
   private
+
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation)
   end
-
 end

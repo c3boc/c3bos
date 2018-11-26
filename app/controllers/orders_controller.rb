@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
   before_action :authorize
 
   def index
-
     @orders = Order.order('id desc').paginate(page: params[:page])
   end
 
@@ -22,15 +23,15 @@ class OrdersController < ApplicationController
     @order.pending!
 
     if @order.save
-      redirect_to root_url, :success => "Order placed. Thank you!"
+      redirect_to root_url, success: 'Order placed. Thank you!'
     else
-      render "new"
+      render 'new'
     end
   end
 
   private
-  def order_params
-    params.require(:order).permit(order_items_attributes: [:beverage_id, :amount])
-  end
 
+  def order_params
+    params.require(:order).permit(order_items_attributes: %i[beverage_id amount])
+  end
 end

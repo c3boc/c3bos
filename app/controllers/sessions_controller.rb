@@ -1,21 +1,22 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   skip_before_action :logout_guest, only: [:destroy]
 
-  def new
-  end
+  def new; end
 
   def create
     user = User.find_by_username(params[:username])
 
-    if user && user.authenticate(params[:password])
+    if user&.authenticate(params[:password])
       if user.role > 0
         session[:user_id] = user.id
-        redirect_to root_url, :info => "Welcome Back"
+        redirect_to root_url, info: 'Welcome Back'
       else
-        redirect_to log_in_path, :danger => "Your Account is disabled"
+        redirect_to log_in_path, danger: 'Your Account is disabled'
       end
     else
-      redirect_to log_in_path, :danger => "Username or Password incorrect"
+      redirect_to log_in_path, danger: 'Username or Password incorrect'
     end
   end
 

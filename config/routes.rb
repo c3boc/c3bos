@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
+  get 'log_in' => 'sessions#new', :as => 'log_in'
+  get 'log_out' => 'sessions#destroy', :as => 'log_out'
+  get 'sign_up' => 'users#new', :as => 'sign_up'
+  get 'place_order' => 'orders#new', :as => 'place_order'
 
-  get "log_in" => "sessions#new", :as => "log_in"
-  get "log_out" => "sessions#destroy", :as => "log_out"
-  get "sign_up" => "users#new", :as => "sign_up"
-  get "place_order" => "orders#new", :as => "place_order"
+  get '/user/:id/role/:role' => 'users#set_role', :as => 'edit_role'
+  post '/beverages/deliver' => 'beverages#deliver', :as => 'deliver'
 
-  get "/user/:id/role/:role" => "users#set_role", :as => "edit_role"
-  post "/beverages/deliver" => "beverages#deliver", :as => "deliver"
-
-  root :to => "dashboard#index"
+  root to: 'dashboard#index'
   resources :users
   resources :sessions
   resources :dashboard
@@ -19,8 +20,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get "print" => "print#list"
-      get "print/:id" => "print#set_printed"
+      get 'print' => 'print#list'
+      get 'print/:id' => 'print#set_printed'
     end
   end
 
