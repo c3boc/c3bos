@@ -10,9 +10,7 @@ class ApplicationController < ActionController::Base
   before_action :logout_guest
 
   def logout_guest
-    if current_user && !current_user.user?
-      redirect_to log_out_path, danger: 'You were logged out by an Admin'
-    end
+    redirect_to log_out_path, danger: 'You were logged out by an Admin' if current_user && !current_user.user?
   end
 
   def current_user
