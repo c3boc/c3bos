@@ -64,6 +64,3 @@ workflows:
       - rubocop:
           requires:
             - deps
-  test:
-    jobs:
-      - unittests
