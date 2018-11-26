@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: ruby:2.5.3
         environment:
-          BUNDLE_PATH: vendor_bundle
+          BUNDLE_PATH: vendor/bundle
           RAILS_ENV: test
     steps:
       - checkout
