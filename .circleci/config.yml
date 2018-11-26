@@ -13,15 +13,15 @@ jobs:
             - bundle-install-{{ checksum "Gemfile.lock" }}
             - bundle-install-
       - run:
-        name: Bundler install
-        command: bundle install
+          name: Bundler install
+          command: bundle install
       - save_cache:
           key: bundle-install-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
       - run:
-        name: Setup database.yml
-        command: cp config/database.yml.example config/database.yml
+          name: Setup database.yml
+          command: cp config/database.yml.example config/database.yml
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -36,7 +36,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: /tmp/workspace
-      - run: bundle exec rubocop
+      - run:
+          name: run rubocop
+          command: bundle exec rubocop
   unittests:
     docker:
       - image: ruby:2.5.3
@@ -52,7 +54,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: /tmp/workspace
-      - run: bundle exec rake test
+      - run:
+          name: Run tests
+          command: bundle exec rake test
 workflows:
   version: 2
   test:
