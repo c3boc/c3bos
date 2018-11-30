@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username
   validates_uniqueness_of :username
 
+  has_many :order_permissions, dependent: :destroy
   has_many :beverages, through: :order_permissions
 
   def admin?

@@ -9,7 +9,9 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @order.order_items = Beverage.all.map do |beverage|
+    beverages = current_user.order_permissions.where(allow: true).map(&:beverage)
+
+    @order.order_items = beverages.map do |beverage|
       OrderItem.new(beverage: beverage)
     end
 

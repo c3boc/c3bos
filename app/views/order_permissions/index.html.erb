@@ -1,0 +1,26 @@
+<div class="col-sm-12">
+  <%= form_tag order_permissions_path, method: :put do %>
+  <table class="table table-striped">
+    <tr>
+      <th></th>
+      <% @order_permission_grid.first.each do |order_permission| %>
+        <th><%= order_permission.beverage.name %></th>
+      <% end %>
+    </tr>
+    <% @order_permission_grid.each do |user_permissions| %>
+      <tr>
+        <th><%= user_permissions.first&.user&.username %></th>
+        <% user_permissions.each do |permission| %>
+          <td>
+            <%= fields_for 'order_permissions[]', permission do |p| %>
+              <%= p.check_box :allow %>
+            <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<div class="col-sm-1 col-sm-offset-11">
+  <%= submit_tag "Save", :class => "btn btn-primary" %>
+</div>
+<% end %>
