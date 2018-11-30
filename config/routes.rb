@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :beverages
   resources :orders
   resources :stats
+  resources :order_permissions, only: :index
+  put '/order_permissions' => 'order_permissions#batch_update'
 
   namespace :api do
     namespace :v1 do
