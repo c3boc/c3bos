@@ -64,9 +64,9 @@ workflows:
   test:
     jobs:
       - deps
-      - unittests:
-          requires:
-            - deps
+#      - unittests:
+#          requires:
+#            - deps
       - rubocop:
           requires:
             - deps
