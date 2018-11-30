@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrderPermissionsController < ApplicationController
   def index
     beverages = Beverage.all
@@ -7,13 +9,14 @@ class OrderPermissionsController < ApplicationController
       end
     end
   end
+
   def batch_update
-    puts params["order_permissions"]
+    puts params['order_permissions']
     puts params
     success = true
-    params["order_permissions"].each do |permission_id, values|
+    params['order_permissions'].each do |permission_id, values|
       p = OrderPermission.find(permission_id)
-      p.allow = values["allow"]
+      p.allow = values['allow']
       success &&= p.save
     end
     if success
