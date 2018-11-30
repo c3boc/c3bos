@@ -1,7 +1,5 @@
 # c3bos
-[![Build Status](https://scrutinizer-ci.com/g/c3boc/c3bos/badges/build.png?b=master)](https://scrutinizer-ci.com/g/c3boc/c3bos/build-status/master)
-[![Code Coverage](https://scrutinizer-ci.com/g/c3boc/c3bos/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/c3boc/c3bos/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/c3boc/c3bos/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/c3boc/c3bos/?branch=master)
+[![CircleCI](https://circleci.com/gh/c3boc/c3bos/tree/master.svg?style=svg)](https://circleci.com/gh/c3boc/c3bos/tree/master)
 
 CCC Bar Operation System
 
