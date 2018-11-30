@@ -10,11 +10,16 @@ class OrderPermissionsController < ApplicationController
   def batch_update
     puts params["order_permissions"]
     puts params
+    success = true
     params["order_permissions"].each do |permission_id, values|
       p = OrderPermission.find(permission_id)
       p.allow = values["allow"]
-      p.save
+      success &&= p.save
     end
-    redirect_to order_permissions_path
+    if success
+      redirect_to order_permissions_path, success: 'Permissions saved'
+    else
+      redirect_to order_permissions_path, danger: 'Something somewhere went horribly wrong.'
+    end
   end
 end
