@@ -201,7 +201,6 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
-  tzinfo-data
   web-console (>= 3.3.0)
   webpacker
   will_paginate (~> 3.1.0)
