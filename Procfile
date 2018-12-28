@@ -1,3 +1,3 @@
 web: bundle exec rails server
-assets: webpack-dev-server
+assets: bundle exec bin/webpack-dev-server
 db: docker-compose up

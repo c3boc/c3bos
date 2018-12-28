@@ -4,8 +4,8 @@ services:
   db:
     image: "postgres:10.1"
     environment:
-      POSTGRES_PASSWORD: "c3bos_development"
       POSTGRES_DB: "c3bos_development"
-      POSTGRES_USER: "c3bos_development"
+      POSTGRES_USER: "c3bos"
+      POSTGRES_PASSWORD: "c3bos"
     ports:
       - "5432:5432"
