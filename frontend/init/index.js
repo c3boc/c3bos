@@ -1,6 +1,7 @@
 import "./index.scss";
 import 'bootstrap-sass/assets/javascripts/bootstrap.js';
 
+require("@rails/ujs").start();
 
 jQuery(function() {
   $("a[rel~=popover], .has-popover").popover();
