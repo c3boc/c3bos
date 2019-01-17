@@ -1,3 +1,8 @@
+import Chartkick from "chartkick";
+import Highcharts from "highcharts";
+Chartkick.addAdapter(Highcharts);
+window.Chartkick = Chartkick;
+
 import "./index.scss";
 import 'bootstrap-sass/assets/javascripts/bootstrap.js';
 

@@ -25,6 +25,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
 
+gem 'chartkick', '~> 3.0', '>= 3.0.2'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

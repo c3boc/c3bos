@@ -5,6 +5,7 @@
   <%= stylesheet_pack_tag 'application' %>
   <%= favicon_link_tag 'favicon.ico', skip_pipeline: true %>
   <%= csrf_meta_tags %>
+  <%= javascript_pack_tag 'application' %>
 </head>
 <body>
 
@@ -61,6 +62,5 @@
       <%= yield %>
     </div>
   </div>
-  <%= javascript_pack_tag 'application' %>
 </body>
 </html>

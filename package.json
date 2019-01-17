@@ -3,6 +3,8 @@
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^3.0.2",
     "bootstrap-sass": "^3.3.7",
+    "chartkick": "^3.0.2",
+    "highcharts": "^7.0.1",
     "jquery": "^3.2.1"
   },
   "devDependencies": {

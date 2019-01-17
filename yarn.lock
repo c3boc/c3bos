@@ -1077,6 +1077,11 @@ chalk@^2.0.1, chalk@^2.3.0:
     escape-string-regexp "^1.0.5"
     supports-color "^4.0.0"
 
+chartkick@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/chartkick/-/chartkick-3.0.2.tgz#8857299595296bdbbcfbe8c028540c58b5e15992"
+  integrity sha512-EJmf7ikPKisW0/naKckCKXq1DW+K5VeCOpqXtWqsCauR+3DhnK/xV1/PEtJovCxH3vPuo/aUU7GwirU6FzBxdw==
+
 chokidar@^1.6.0, chokidar@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.7.0.tgz#798e689778151c8076b4b360e5edd28cda2bb468"
@@ -2269,6 +2274,11 @@ hawk@~6.0.2:
     cryptiles "3.x.x"
     hoek "4.x.x"
     sntp "2.x.x"
+
+highcharts@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-7.0.1.tgz#0c6ad096559aca723bc95276bce02b9790c444e8"
+  integrity sha512-dB+BuvIt6q2e4M0MgBClOA5FbNqfOpq/hoqQOLBVBSCqXOoCHd2fgEPFuruuyTf6KqiaIKjbRJ4JZd1fImEBYg==
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
