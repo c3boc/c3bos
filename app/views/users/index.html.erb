@@ -9,11 +9,25 @@
       <tr>
         <td><%= user["username"] %></td>
         <td>
-          <% unless user["role"] == 0 %><%= link_to "Disabled", edit_role_path(user,0) %><% else %>Disabled<% end %> |
-          <% unless user["role"] == 1 %><%= link_to "User", edit_role_path(user,1) %><% else %>User<% end %> |
-          <% unless user["role"] == 2 %><%= link_to "Admin", edit_role_path(user,2) %><% else %>Admin<% end %>
+          <% confirm = 'You are editing yourself, are you sure?' if user == current_user %>
+          <% unless user["role"] == 0 %>
+            <%= link_to "Disabled", user_set_role_path(user, role: 0), method: :put, data: {confirm: confirm} %>
+          <% else %>
+            Disabled
+          <% end %> |
+          <% unless user["role"] == 1 %>
+            <%= link_to "User", user_set_role_path(user, role: 1), method: :put, data: {confirm: confirm} %>
+          <% else %>
+            User
+          <% end %> |
+          <% unless user["role"] == 2 %>
+            <%= link_to "Admin", user_set_role_path(user, role: 2), method: :put, data: {confirm: confirm} %>
+          <% else %>
+            Admin
+          <% end %>
         </td>
-        <td><%= link_to "Delete", user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% confirm = user == current_user ? 'You are deleting yourself, are you sure?' : 'Are you sure?' %>
+        <td><%= link_to "Delete", user_path(user), method: :delete, data: { confirm: confirm } %></td>
       </tr>
     <% end %>
   </table>
