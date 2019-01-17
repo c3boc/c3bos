@@ -1,13 +1,13 @@
 {
   "dependencies": {
     "@rails/ujs": "^6.0.0-alpha",
-    "@rails/webpacker": "^3.0.2",
+    "@rails/webpacker": "3.5",
     "bootstrap-sass": "^3.3.7",
     "chartkick": "^3.0.2",
     "highcharts": "^7.0.1",
     "jquery": "^3.2.1"
   },
   "devDependencies": {
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-server": "2.11.2"
   }
 }
