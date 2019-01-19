@@ -3,6 +3,7 @@
 class UsersController < ApplicationController
   before_action :authorize_admin
   skip_before_action :authorize_admin, only: %i[new create]
+  before_action :set_user, only: %i[set_role]
 
   def index
     @users = User.all
@@ -31,7 +32,6 @@ class UsersController < ApplicationController
   end
 
   def set_role
-    @user = User.find(params[:id])
     @user.role = params[:role]
     session.delete(@user.id) if @user.disabled?
     @user.save
@@ -40,6 +40,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation)
