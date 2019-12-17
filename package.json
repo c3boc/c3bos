@@ -2,7 +2,7 @@
   "dependencies": {
     "@rails/webpacker": "^3.0.2",
     "bootstrap-sass": "^3.3.7",
-    "jquery": "^3.2.1"
+    "jquery": "^3.4.0"
   },
   "devDependencies": {
     "postcss-smart-import": "^0.7.6",
