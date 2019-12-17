@@ -4,6 +4,8 @@ Metrics/MethodLength:
   Max: 20
 Style/Documentation:
   Enabled: false
+Style/GuardClause:
+  Enabled: false
 Metrics/AbcSize:
   Enabled: false
 AllCops:
