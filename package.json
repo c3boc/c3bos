@@ -5,6 +5,7 @@
     "jquery": "^3.2.1"
   },
   "devDependencies": {
+    "postcss-smart-import": "^0.7.6",
     "webpack-dev-server": "^2.9.7"
   }
 }

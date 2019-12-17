@@ -83,6 +83,7 @@ test:
 #
 production:
   <<: *default
+  host: db
   database: c3bos
   username: c3bos
   password: <%= ENV['DATABASE_PASSWORD'] %>

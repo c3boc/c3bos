@@ -1,17 +1,41 @@
 <div class="col-md-12">
   <h1>Statistics</h1>
   <div class="row">
-    <div class="col-md-6">
-      <h3>In Stock</h3>
-      <%= column_chart @data_instock %>
+    <div class="col-md-4">
+      <h3>Orders by Beverage</h3>
+        <table class="table table-striped">
+          <tr>
+            <td>Beverage</td>
+            <td>Amount ordered</td>
+          </tr>
+          <% @beverage_orders.each do |beverage, amount| %>
+          <tr>
+            <td>
+              <%= beverage %>
+            </td>
+            <td><%= amount %></td>
+          <% end %>
+          </tr>
+        </table>
     </div>
-    <div class="col-md-6">
-      <h3>Ordered</h3>
-      <%= column_chart @data_ordered %>
-    </div>
-    <div class="col-md-6">
-      <h3>Orders by Date</h3>
-      <%= column_chart @data_order_time %>
+    <div class="col-md-4">
+      <h3>Orders by User</h3>
+        <table class="table table-striped">
+          <tr>
+            <td>Beverage</td>
+            <td>Amount ordered</td>
+          </tr>
+          <% @orders_by_user.each do |user, orders| %>
+          <tr>
+            <td><%= user %></td>
+            <td>
+              <% orders.each do |beverage, amount| %>
+                <%= beverage %>: <%= amount %><br>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

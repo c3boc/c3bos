@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :order_permissions, dependent: :destroy
   has_many :beverages, through: :order_permissions
 
+  has_many :orders
+
   def admin?
     role >= 2
   end

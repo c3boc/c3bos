@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   app:
-    image: "c3boc/c3bos:latest"
+    image: "c3boc/c3bos:35c3-0.8"
     environment:
       RAILS_ENV: "production"
       DATABASE_PASSWORD: "example"
@@ -14,15 +14,15 @@ services:
         - "traefik.docker.network=proxy"
         - "traefik.frontend.rule=Host:c3boc.de"
   db:
-    image: "postgres:10.1"
+    image: "postgres:11.1"
     environment:
       POSTGRES_PASSWORD: "example"
       POSTGRES_DB: "c3bos"
       POSTGRES_USER: "c3bos"
     volumes:
-      - /opt/db:/var/lib/postgresql/data
+      - db:/var/lib/postgresql/data
   proxy:
-    image: traefik:1.4
+    image: traefik:1.6.5
     ports:
       - target: 80
         published: 80
@@ -55,3 +55,6 @@ networks:
   default:
   proxy:
     internal: true
+
+volumes:
+  db:
