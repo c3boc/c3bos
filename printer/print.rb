@@ -20,15 +20,13 @@ template = %(
   * <%= item["amount"] %>x <%= item["beverage"] %>
   <% end %>
 =======================
-
-
 ).gsub(/^  /, '')
 
 response = HTTParty.get(list_url)
 orders = JSON.parse(response.parsed_response)
 orders.each do |order|
   message = ERB.new(template, 0, trim_mode: '%<>')
-  order["order_items"].reject! { |item| item["amount"].nil? }
+  order['order_items'].reject! { |item| item['amount'].nil? }
   result = message.result_with_hash(order)
   File.open(printer, 'w') do |f|
     f.write(result)
