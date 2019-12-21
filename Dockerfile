@@ -1,4 +1,4 @@
-FROM ruby:2.5.3 AS builder
+FROM ruby:2.6.5 AS builder
 RUN apt update && apt install -y apt-transport-https lsb-release libpq5
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
 RUN apt install -y nodejs

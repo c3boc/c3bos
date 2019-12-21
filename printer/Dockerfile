@@ -1,7 +1,7 @@
-FROM ruby:2.5.3
-
-COPY print.rb /print.rb
+FROM ruby:2.6.5
 
 RUN gem install httparty
+COPY print.rb /print.rb
 
-CMD bash -c "while true; do ruby print.rb && sleep 20; done"
+
+CMD ruby print.rb

@@ -1,11 +1,14 @@
 {
+  "name": "c3boc",
+  "private": true,
   "dependencies": {
-    "@rails/webpacker": "4.2.2",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "^4.2.2",
     "bootstrap-sass": "^3.3.7",
-    "jquery": "^3.2.1"
+    "jquery": "^3.4.1",
+    "turbolinks": "^5.2.0"
   },
-  "devDependencies": {
-    "postcss-smart-import": "^0.7.6",
-    "webpack-dev-server": "^3.9.0"
-  }
+  "version": "0.1.0"
 }
