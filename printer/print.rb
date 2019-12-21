@@ -6,7 +6,7 @@ require 'erb'
 #api_url_root = 'http://localhost:3000/api/v1'
 api_url_root = 'https://c3boc.de/api/v1'
 
-#list_url = api_url_root + '/print'
+list_url = api_url_root + '/print'
 printer = '/dev/usb/lp0'
 image = File.read('gnomus.bin')
 
@@ -49,8 +49,9 @@ while true
       puts ack_url
       puts HTTParty.get(ack_url)
     end
-  rescue
+  rescue => e
     puts "Error fetching Orders"
+    puts e
   end
   sleep 30
 end
