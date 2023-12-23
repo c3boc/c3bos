@@ -1,26 +1,48 @@
-<h1> Registration </h1>
-
-<%= form_with model: @user, url: registration_path do |form| %>
-  <% if form.object.errors.any? %>
-    <% form.object.errors.full_messages.each do |message| %>
-      <div>
-        <%= message %>
-      </div>
-    <% end %>
-  <% end %>
-  <div>
-    <%= form.label :username %>
-    <%= form.text_field :username %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-6">
+      <h1>Registration</h1>
+      <%= form_with model: @user, url: registration_path do |form| %>
+        <div class="mb-3">
+          <% invalid = @user.errors.include?(:username) %>
+          <%= form.label :username, class: "form-label" %>
+          <%= form.text_field :username, class: "form-control #{"is-invalid" if invalid}" %>
+          <% if invalid %>
+          <div class="invalid-feedback">
+            <% @user.errors.full_messages_for(:username).each do |error_message| %>
+              <%= error_message %>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+        <div class="mb-3">
+          <% invalid = @user.errors.include?(:password) %>
+          <%= form.label :password, class: "form-label" %>
+          <%= form.password_field :password, class: "form-control #{"is-invalid" if invalid}" %>
+          <% if invalid %>
+          <div class="invalid-feedback">
+            <% @user.errors.full_messages_for(:password).each do |error_message| %>
+              <%= error_message %>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+        <div class="mb-3">
+          <% invalid = @user.errors.include?(:password_confirmation) %>
+          <%= form.label :password_confirmation, class: "form-label" %>
+          <%= form.password_field :password_confirmation, class: "form-control #{"is-invalid" if invalid}" %>
+          <% if invalid %>
+          <div class="invalid-feedback">
+            <% @user.errors.full_messages_for(:password_confirmation).each do |error_message| %>
+              <%= error_message %>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+        <div class="mb-3">
+          <%= form.submit "Register", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-  <div>
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
-  </div>
-  <div>
-    <%= form.submit "Register" %>
-  </div>
-<% end %>
+</div>

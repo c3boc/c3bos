@@ -11,8 +11,10 @@ class RegistrationsController < ApplicationController
     
     if @user.save
       login @user
-      redirect_to root_path, notice: "Successfully created account"
+      flash[:success] = "Successfully created account"
+      redirect_to root_path
     else
+      flash.now[:danger] = "Error creating account"
       render :new, status: :unprocessable_entity
     end
   end

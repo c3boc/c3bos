@@ -11,17 +11,42 @@
   </head>
 
   <body>
-  <div><%= notice %></div>
-  <div><%= alert %></div>
 
-<% if user_signed_in? %>
-<div>Hello <%= current_user.username %> (<%= current_user.role %>) 
-<%= button_to "Logout", session_path, method: :delete %>
-<% else %>
-<%= link_to "Login", new_session_path %>
-<%= link_to "Register", new_registration_path %>
-<% end %>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <%= link_to "c3bos", root_path, class: "navbar-brand" %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse justify-content-between" id="navbar">
+          <nav class="navbar-nav mr-auto">
+              <%= link_to "Dashboard", root_path, class: "nav-link" %>
+              <%= link_to "Orders", root_path, class: "nav-link" %>
+          </nav>
+
+          <nav class="navbar-nav">
+            <% if user_signed_in? %>
+              <span class="navbar-text">Hello <%= current_user.username %></span>
+              <%= button_to "Logout", session_path, method: :delete, class: "nav-link btn" %>
+            <% else %>
+              <%= link_to "Login", new_session_path, class: "nav-link" %>
+              <%= link_to "Register", new_registration_path, class: "nav-link" %>
+            <% end %>
+          </nav>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+    <% flash.each do |f| %>
+      <div class="alert alert-<%= f[0] %>">
+        <%= f[1] %>
+      </div>
+      <% end %>
+    </div>
+    
     <%= yield %>
   </body>
 </html>
+
