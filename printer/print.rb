@@ -1,13 +1,13 @@
-# frozen_string_literal: true
-
 require 'httparty'
 require 'erb'
 
 #api_url_root = 'http://localhost:3000/api/v1'
 api_url_root = 'https://c3boc.de/api/v1'
 
+puts "Printer start"
+
 list_url = api_url_root + '/print'
-printer = '/dev/usb/lp0'
+printer = '/printer'
 image = File.read('gnomus.bin')
 
 template = %(
@@ -32,8 +32,11 @@ template = %(
 
 )
 
+puts "starting loop"
+
 while true
   begin
+    puts "fetching orders..."
     response = HTTParty.get(list_url)
     orders = JSON.parse(response.parsed_response)
     orders.each do |order|
@@ -53,5 +56,8 @@ while true
     puts "Error fetching Orders"
     puts e
   end
-  sleep 30
+  30.times do
+    print "."
+    sleep 1
+  end
 end

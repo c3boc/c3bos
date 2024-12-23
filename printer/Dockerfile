@@ -1,8 +1,8 @@
-FROM ruby:2.6.5
+FROM ruby:3
 
 RUN gem install httparty
 COPY print.rb /print.rb
 COPY gnomus.bin /gnomus.bin
 
-
-CMD ruby print.rb
+ENTRYPOINT ["ruby"]
+CMD ["/print.rb"]

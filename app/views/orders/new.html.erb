@@ -16,11 +16,11 @@
   <% @order.order_items.each_with_index do |order_item, index| %>
     <div class="col-sm-6">
       <div class="well well-beverage">
-        <div class="pull-left">
+        <div class="">
           <span class="beverage-amount" data-beverage-id="<%= index %>">0</span> &times;
           <b><%= order_item.beverage.name %></b>
         </div>
-        <div class="btn-group pull-right">
+        <div class="btn-group">
           <button class="btn btn-default btn-lg" data-action="increase-amount" data-beverage-id="<%= index %>">+</button>
           <button class="btn btn-default btn-lg" data-action="decrease-amount" data-beverage-id="<%= index %>">&minus;</button>
         </div>
