@@ -1,17 +1,8 @@
-Metrics/LineLength:
-  Max: 120
-Metrics/MethodLength:
-  Max: 20
-Style/Documentation:
-  Enabled: false
-Style/GuardClause:
-  Enabled: false
-Metrics/AbcSize:
-  Enabled: false
-AllCops:
-  Exclude:
-    - 'bin/**/*'
-    - 'config/**/*'
-    - 'node_modules/**/*'
-    - 'db/schema.rb'
-    - 'vendor/bundle/**/*'
+# Omakase Ruby styling for Rails
+inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+
+# Overwrite or add rules to create your own house style
+#
+# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
+# Layout/SpaceInsideArrayLiteralBrackets:
+#   Enabled: false

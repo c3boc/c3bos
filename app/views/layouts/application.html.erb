@@ -1,66 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>C3 BOS</title>
-  <%= stylesheet_pack_tag 'application' %>
-  <%= favicon_link_tag 'favicon.ico', skip_pipeline: true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title><%= content_for(:title) || "C3bos" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-      </button>
-      <div class="navbar-header">
-        <%= link_to 'C3BOC', root_path, class: 'navbar-brand' %>
-      </div>
-      <div class="collapse navbar-collapse" id="navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li><%= link_to "Dashboard", root_path, class: 'navbar-link' %></li>
-          <% if user? %>
-            <li><%= link_to "Orders", orders_path, class: 'navbar-link' %></li>
-          <% end %>
-          <% if admin? %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Users", users_path, class: 'navbar-link' %></li>
-                <li><%= link_to "Beverages", beverages_path, class: 'navbar-link' %></li>
-                <li><%= link_to "Order Permissions", order_permissions_path, class: 'navbar-link' %></li>
-                <li><%= link_to "Statistics", stats_path, class: 'navbar-link' %></li>
-              </ul>
-            </li>
-          <% end %>
-        </ul>
+    <%= yield :head %>
 
-        <% if current_user %>
-          <p class="navbar-text navbar-right"> Hello, <%= current_user.username %>! (<%= link_to "Logout", log_out_path %>)</p>
-        <% else %>
-          <ul class="nav navbar-nav navbar-right" >
-            <li><%= link_to 'Login', log_in_path, class: 'navbar-link' %></li>
-            <li><%= link_to 'Signup', sign_up_path, class: 'navbar-link' %></li>
-          </ul>
-        <% end %>
-      </div>
-    </div>
-  </nav>
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
 
-  <div class="container">
-    <div class="row">
-      <% flash.each do |f| %>
-      <div class="alert alert-<%= f[0] %>">
-        <%= f[1] %>
-      </div>
-      <% end %>
-      <%= yield %>
-    </div>
-  </div>
-  <%= javascript_pack_tag 'application' %>
-</body>
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
 </html>
