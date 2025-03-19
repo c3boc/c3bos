@@ -1,5 +1,6 @@
 require 'httparty'
 require 'erb'
+require 'json'
 
 #api_url_root = 'http://localhost:3000/api/v1'
 api_url_root = 'https://c3boc.de/api/v1'

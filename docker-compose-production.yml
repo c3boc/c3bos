@@ -26,9 +26,9 @@ services:
       - db
   print:
     restart: always
-    image: "print:6"
+    image: "print:9"
     devices:
-      - /dev/usb/lp0:/printer
+      - /dev/usb/lp0:/dev/usb/lp0
     
 
 
