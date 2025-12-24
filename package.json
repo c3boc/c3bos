@@ -2,9 +2,9 @@
   "name": "c3boc",
   "private": true,
   "dependencies": {
-    "@rails/actioncable": "^6.0.0",
-    "@rails/activestorage": "^6.0.0",
-    "@rails/ujs": "^6.0.0",
+    "@rails/actioncable": "^8.0.0",
+    "@rails/activestorage": "^8.0.0",
+    "@rails/ujs": "^8.0.0",
     "@rails/webpacker": "^4.2.2",
     "bootstrap-sass": "^3.3.7",
     "jquery": "^3.4.1",
