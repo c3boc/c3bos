@@ -29,7 +29,7 @@ services:
     image: "print:9"
     devices:
       - /dev/usb/lp0:/dev/usb/lp0
-    
+
 
 
 networks:

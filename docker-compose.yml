@@ -1,0 +1,15 @@
+services:
+  db:
+    image: "postgres:18"
+    environment:
+      POSTGRES_PASSWORD: "example"
+      POSTGRES_DB: "c3bos"
+      POSTGRES_USER: "c3bos"
+    restart: always
+    volumes:
+      - db:/var/lib/postgresql
+    ports:
+      - "127.0.0.1:5432:5432"
+
+volumes:
+  db:

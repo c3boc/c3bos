@@ -2,13 +2,20 @@
   "name": "c3boc",
   "private": true,
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "@rails/actioncable": "^8.0.0",
     "@rails/activestorage": "^8.0.0",
-    "@rails/ujs": "^8.0.0",
-    "@rails/webpacker": "^4.2.2",
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
     "jquery": "^3.4.1",
-    "turbolinks": "^5.2.0"
+    "sass": "^1.97.1",
+    "turbolinks": "^5.2.0",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1"
   },
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "scripts": {
+    "build": "webpack --config ./config/webpack/webpack.config.js",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+  }
 }

@@ -1,12 +1,15 @@
-import '../stylesheets/application'
+// Entry point for the build script in your package.json
+
+//import './stylesheets/application'
 
 console.log("LOL")
-import 'jquery';
+import * as bootstrap from 'bootstrap';
 
-import 'bootstrap-sass/assets/javascripts/bootstrap.js';
+import jquery from 'jquery'
+window.jQuery = jquery
+window.$ = jquery
 
-
-jQuery(function() {
+jquery(function() {
   $("a[rel~=popover], .has-popover").popover();
   $("a[rel~=tooltip], .has-tooltip").tooltip();
 });

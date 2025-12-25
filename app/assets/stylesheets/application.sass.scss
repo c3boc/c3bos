@@ -1,0 +1,21 @@
+//$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+//@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+body {
+  padding-top: 70px;
+}
+
+.btn-lg {
+  font-size: 30px;
+}
+
+.well-beverage {
+  font-size: 30px;
+}
+
+.well-beverage span {
+  margin: 10px 0;
+}

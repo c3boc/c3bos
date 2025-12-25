@@ -5,5 +5,5 @@ class Order < ActiveRecord::Base
   has_many :order_items
   accepts_nested_attributes_for :order_items
 
-  enum state: %i[pending printed]
+  enum :state, [:pending, :printed]
 end

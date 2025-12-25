@@ -14,18 +14,24 @@
 <% end %>
 
   <% @order.order_items.each_with_index do |order_item, index| %>
-    <div class="col-sm-6">
-      <div class="well well-beverage">
-        <div class="">
-          <span class="beverage-amount" data-beverage-id="<%= index %>">0</span> &times;
+  <div class="col-md-4">
+    <div class="card mb-3 text-bg-light well-beverage">
+      <div class="row g-0">
+        <div class="col-md-10">
+          <div class="card-body">
+            <span class="beverage-amount" data-beverage-id="<%= index %>">0</span> &times;
           <b><%= order_item.beverage.name %></b>
         </div>
-        <div class="btn-group">
-          <button class="btn btn-default btn-lg" data-action="increase-amount" data-beverage-id="<%= index %>">+</button>
-          <button class="btn btn-default btn-lg" data-action="decrease-amount" data-beverage-id="<%= index %>">&minus;</button>
+        </div>
+        <div class="col-md-2">
+          <div class="btn-group-vertical btn-group-lg" style="width: 100%" role="group">
+            <button class="btn btn-success" data-action="increase-amount" data-beverage-id="<%= index %>">+</button>
+            <button class="btn btn-danger" data-action="decrease-amount" data-beverage-id="<%= index %>">&minus;</button>
+          </div>
         </div>
       </div>
     </div>
+  </div>
   <% end %>
 
 <%= form_for @order, :html => {:class => "form-horizontal"} do |f| %>
