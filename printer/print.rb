@@ -10,7 +10,7 @@ puts "Printer start"
 list_url = api_url_root + '/print'
 printer = '/printer'
 printer = "/dev/usb/lp0"
-image = File.read('gnomus.bin')
+image = File.read('boc.bin')
 
 template = %(
 
